@@ -1,0 +1,6 @@
+id,customer,item,category,amount,status
+ORD-101,Alice Smith,Wireless Mechanical Keyboard,Electronics,89.99,completed
+ORD-102,Bob Johnson,Ergonomic Desk Chair,Furniture,249.50,completed
+ORD-103,Charlie Davis,Braided USB-C Cable,Electronics,14.99,pending
+ORD-104,Diana Prince,Microfiber Desk Mat,Accessories,25.00,refunded
+ORD-105,Evan Wright,Ultra-Wide Monitor,Electronics,420.00,completed

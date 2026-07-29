@@ -2,6 +2,7 @@
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@types/node": "^26.1.2",
+    "@types/papaparse": "^5.5.2",
     "eslint": "^10.8.0",
     "globals": "^17.8.0",
     "tsx": "^4.23.1",
@@ -18,5 +19,8 @@
   },
   "allowScripts": {
     "esbuild@0.28.1": true
+  },
+  "dependencies": {
+    "papaparse": "^5.5.4"
   }
 }
