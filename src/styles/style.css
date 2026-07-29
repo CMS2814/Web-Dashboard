@@ -29,9 +29,24 @@ body {
   height: 1000px;
   margin: 0 auto;
 
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
 
   background-color: aquamarine;
+}
+
+.order {
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+
+  font-size: 5px;
+
+  background-color: #db34bf;
 }
 
 .rectangle-container {
