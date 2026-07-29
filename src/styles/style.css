@@ -24,6 +24,16 @@ body {
   background-color: #34db34;
 }
 
+#order-list {
+  width: 500px;
+  height: 1000px;
+  margin: 0 auto;
+
+  display: flex;
+
+  background-color: aquamarine;
+}
+
 .rectangle-container {
   display: flex; /* Aligns children horizontally */
   flex-direction: row; /* Explicitly sets horizontal alignment (default) */

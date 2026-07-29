@@ -1,11 +1,13 @@
 import path from "path";
 
 import "./styles/style.css";
-import { readJsonFile } from "./parser";
+import { readJsonFile, readCsvFile } from "./parser";
+import * as Types from "./types";
 
 const dropZone = document.getElementById("dropzone") as HTMLDivElement | null;
 
 if (dropZone) {
+  console.log("Dropzone element found!");
   // 2. Prevent default browser behavior on dragover (CRITICAL!)
   dropZone.addEventListener("dragover", (event: DragEvent) => {
     event.preventDefault();
@@ -32,13 +34,17 @@ if (dropZone) {
 
     // 5. Validate file extension (.json or .csv only!)
     if (fileName.endsWith(".json")) {
+      console.log("JSON file detected!");
       console.log(readJsonFile(file));
-      /*} else if (fileName.endsWith(".csv")) {
-      readCsvFile(file);*/
+    } else if (fileName.endsWith(".csv")) {
+      console.log("CSV file detected!");
+      console.log(readCsvFile(file));
     } else {
       alert("Invalid file type, CMS! Please drop a .json or .csv file.");
     }
   });
+} else {
+  console.error("Dropzone element not found!");
 }
 
 console.log("App initialized!");
