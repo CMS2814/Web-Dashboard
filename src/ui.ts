@@ -7,13 +7,13 @@ const ordersListContainer = document.getElementById(
 export function renderOrders(order: Types.Order) {
   if (ordersListContainer) {
     console.log("Rendering orders...");
-    const order = document.createElement("div");
-    order.className = "order";
+    const orderInfo = document.createElement("div");
+    orderInfo.className = "order";
 
     const orderId = document.createElement("h1");
     orderId.textContent = `Order ID: ${order.id}`;
 
-    order.appendChild(orderId);
-    ordersListContainer.appendChild(order);
+    orderInfo.appendChild(orderId);
+    ordersListContainer.appendChild(orderInfo);
   }
 }
