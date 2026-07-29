@@ -1,0 +1,42 @@
+[
+  {
+    "id": "ORD-101",
+    "customer": "Alice Smith",
+    "item": "Wireless Mechanical Keyboard",
+    "category": "Electronics",
+    "amount": 89.99,
+    "status": "completed"
+  },
+  {
+    "id": "ORD-102",
+    "customer": "Bob Johnson",
+    "item": "Ergonomic Desk Chair",
+    "category": "Furniture",
+    "amount": 249.5,
+    "status": "completed"
+  },
+  {
+    "id": "ORD-103",
+    "customer": "Charlie Davis",
+    "item": "Braided USB-C Cable",
+    "category": "Electronics",
+    "amount": 14.99,
+    "status": "pending"
+  },
+  {
+    "id": "ORD-104",
+    "customer": "Diana Prince",
+    "item": "Microfiber Desk Mat",
+    "category": "Accessories",
+    "amount": 25.0,
+    "status": "refunded"
+  },
+  {
+    "id": "ORD-105",
+    "customer": "Evan Wright",
+    "item": "Ultra-Wide Monitor",
+    "category": "Electronics",
+    "amount": 420.0,
+    "status": "completed"
+  }
+]
