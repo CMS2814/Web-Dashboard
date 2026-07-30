@@ -8,51 +8,62 @@ import * as Types from "./types";
 
 import { renderOrders } from "./ui";
 
+import * as Storage from "./storage";
+
 const dropZone = document.getElementById("dropzone") as HTMLDivElement | null;
+const selectFileBtn = document.getElementById(
+  "selectFileBtn",
+) as HTMLButtonElement | null;
+const fileInput = document.getElementById(
+  "fileinput",
+) as HTMLInputElement | null;
 
-if (dropZone) {
-  console.log("Dropzone element found!");
-  dropZone.addEventListener("dragover", (event: DragEvent) => {
-    event.preventDefault();
-    dropZone.classList.add("drag-active");
-  });
+async function handleFiles(files: FileList | null): Promise<void> {
+  if (!files || files.length === 0) return;
 
-  dropZone.addEventListener("dragleave", () => {
-    dropZone.classList.remove("drag-active");
-  });
+  const file = files[0];
+  console.log(`Processing selected file: ${file.name}`);
+  const fileName = file.name.toLowerCase();
 
-  dropZone.addEventListener("drop", async (event: DragEvent) => {
-    event.preventDefault();
-    dropZone.classList.remove("drag-active");
+  let orders: Types.Order[] = [];
 
-    const files = event.dataTransfer?.files;
+  if (fileName.endsWith(".json")) {
+    console.log("JSON file detected!");
+    orders = await readJsonFile(file);
+  } else if (fileName.endsWith(".csv")) {
+    console.log("CSV file detected!");
+    orders = await readCsvFile(file);
+  } else {
+    alert("Invalid file type, CMS! Please drop a .json or .csv file.");
+  }
 
-    if (!files || files.length === 0) return;
+  Storage.saveOrders(orders);
 
-    const file = files[0];
-    const fileName = file.name.toLowerCase();
+  const savedOrders = Storage.loadOrders();
 
-    let orders: Types.Order[] = [];
-
-    if (fileName.endsWith(".json")) {
-      console.log("JSON file detected!");
-      orders = await readJsonFile(file);
-    } else if (fileName.endsWith(".csv")) {
-      console.log("CSV file detected!");
-      orders = await readCsvFile(file);
-    } else {
-      alert("Invalid file type, CMS! Please drop a .json or .csv file.");
+  if (savedOrders) {
+    for (const order of savedOrders) {
+      renderOrders(order);
+      console.log(order.id);
     }
-
-    if (orders) {
-      for (const order of orders) {
-        renderOrders(order);
-        console.log(order.id);
-      }
-    }
-  });
-} else {
-  console.error("Dropzone element not found!");
+  }
 }
+
+dropZone?.addEventListener("dragover", (e) => e.preventDefault());
+
+dropZone?.addEventListener("drop", (e: DragEvent) => {
+  handleFiles(e.dataTransfer?.files || null);
+  e.preventDefault();
+});
+
+selectFileBtn?.addEventListener("click", () => fileInput?.click());
+
+fileInput?.addEventListener("change", () => {
+  if (fileInput?.files) {
+    handleFiles(fileInput.files);
+  }
+
+  fileInput.value = "";
+});
 
 console.log("App initialized!");
