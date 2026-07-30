@@ -4,16 +4,16 @@ const ordersListContainer = document.getElementById(
   "order-list",
 ) as HTMLDivElement | null;
 
-export function renderOrders(order: Types.Order) {
-  if (ordersListContainer) {
-    console.log("Rendering orders...");
-    const orderInfo = document.createElement("div");
-    orderInfo.className = "order";
+export function makeOrder(order: Types.Order) {
+  if (!ordersListContainer) return;
 
-    const orderId = document.createElement("h1");
-    orderId.textContent = `Order ID: ${order.id}`;
+  console.log("Rendering orders...");
+  const orderInfo = document.createElement("div");
+  orderInfo.className = "order";
 
-    orderInfo.appendChild(orderId);
-    ordersListContainer.appendChild(orderInfo);
-  }
+  const orderId = document.createElement("h1");
+  orderId.textContent = `Order ID: ${order.id}`;
+
+  orderInfo.appendChild(orderId);
+  ordersListContainer.appendChild(orderInfo);
 }
