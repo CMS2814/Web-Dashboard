@@ -41,20 +41,30 @@ body {
   margin: 0 auto;
 
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
 
   padding: 20px;
   background-color: aquamarine;
+
+  height: auto;
+  box-sizing: border-box;
+
+  overflow: hidden;
 }
 
 .order {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  min-width: 0;
+  aspect-ratio: 4 / 1;
 
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
+  text-align: left;
+
+  padding: 10px;
 
   font-size: 0.875rem;
 

@@ -38,7 +38,15 @@ export function makeOrder(order: Types.Order) {
   const orderId = document.createElement("h1");
   orderId.textContent = `Order ID: ${order.id}`;
 
+  const orderItem = document.createElement("h2");
+  orderItem.textContent = `Order Item: ${order.item}`;
+
+  const orderAmount = document.createElement("h3");
+  orderAmount.textContent = `Amount: $${order.amount.toFixed(2)}`;
+
   orderInfo.appendChild(orderId);
+  orderInfo.appendChild(orderItem);
+  orderInfo.appendChild(orderAmount);
   ordersListContainer.appendChild(orderInfo);
 }
 

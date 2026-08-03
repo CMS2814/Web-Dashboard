@@ -35,7 +35,7 @@ export function calculateAnalytics(orders: Types.Order[]): {
 
   for (const order of orders) {
     if (order.status.toLowerCase() !== "refunded") {
-      totalRevenue += Number(order.amount);
+      totalRevenue += order.amount;
 
       categoryTotals[order.category] =
         (categoryTotals[order.category] || 0) + 1;
