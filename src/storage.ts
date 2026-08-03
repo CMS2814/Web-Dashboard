@@ -42,3 +42,7 @@ export function saveOrders(orders: Types.Order[]) {
 export function clearOrders() {
   localStorage.removeItem("orders");
 }
+
+export function clearAnalytics() {
+  localStorage.removeItem("analytics");
+}

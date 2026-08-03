@@ -6,9 +6,11 @@ import "./styles/style.css";
 import { readJsonFile, readCsvFile } from "./parser";
 import * as Types from "./types";
 
-import { makeOrder, renderOrderChart } from "./ui";
+import { makeOrder, displayAnalytics } from "./ui";
 
 import * as Storage from "./storage";
+
+import { calculateAnalytics } from "./analytics";
 
 const dropZone = document.getElementById("dropzone") as HTMLDivElement | null;
 const ordersListContainer = document.getElementById(
@@ -21,8 +23,14 @@ const fileInput = document.getElementById(
   "fileinput",
 ) as HTMLInputElement | null;
 
+const clearDataBtn = document.getElementById(
+  "clearDataBtn",
+) as HTMLButtonElement | null;
+
 function loadOrders() {
   const ordersData = Storage.loadOrders();
+  const analytics = calculateAnalytics(ordersData || []);
+  displayAnalytics(analytics);
   if (ordersListContainer) {
     ordersListContainer.innerHTML = "";
   }
@@ -93,8 +101,15 @@ fileInput?.addEventListener("change", async () => {
   fileInput.value = "";
 });
 
+clearDataBtn?.addEventListener("click", () => {
+  Storage.clearOrders();
+  Storage.clearAnalytics();
+  loadOrders();
+});
+
 loadOrders();
 //Storage.clearOrders();
+//Storage.clearAnalytics();
 
 //renderOrderChart();
 

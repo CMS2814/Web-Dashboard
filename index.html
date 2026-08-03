@@ -10,15 +10,18 @@
       <h1>Shop Name</h1>
       <!-- Order details -->
       <div class="rectangle-container">
-        <div class="rectangle">
+        <div class="rectangle" id="total-revenue">
           <h2><strong>Total Revenue</strong></h2>
-          <h3>$0.00</h3>
+          <h3 id="revenue-count">$0.00</h3>
+        </div>
+        <div class="rectangle" id="total-orders">
+          <h2>Total Orders</h2>
+          <h3 id="order-count">0</h3>
         </div>
         <div class="rectangle">
-          <h2>Total Orders</h2>
-          <h3>0</h3>
+          <h2>Status</h2>
+          <h3 id="status-count">🟢0 🟡0 🔴0</h3>
         </div>
-        <div class="rectangle"></div>
       </div>
       <!-- Orders JSON/CSV file input -->
       <div id="dropzone">
@@ -35,6 +38,8 @@
 
       <!-- Orders UI display area  -->
       <div id="order-list"></div>
+
+      <button id="clearDataBtn">Clear Data</button>
     </div>
 
     <script type="module" src="/src/main.ts"></script>

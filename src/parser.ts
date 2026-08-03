@@ -11,5 +11,6 @@ export async function readJsonFile(file: File): Promise<any> {
 
 export async function readCsvFile(file: File): Promise<any> {
   const result = Papa.parse(await file.text(), { header: true });
+  console.log(result.data);
   return result.data;
 }

@@ -41,3 +41,37 @@ export function makeOrder(order: Types.Order) {
   orderInfo.appendChild(orderId);
   ordersListContainer.appendChild(orderInfo);
 }
+
+export function displayAnalytics(analytics?: any) {
+  console.log("Analytics data:", analytics);
+  const totalOrdersElement = document.getElementById("order-count");
+  const totalRevenueElement = document.getElementById("revenue-count");
+  const statusCountElement = document.getElementById("status-count");
+
+  if (!analytics || Object.keys(analytics).length === 0) {
+    if (totalOrdersElement) {
+      totalOrdersElement.textContent = "";
+    }
+
+    if (totalRevenueElement) {
+      totalRevenueElement.textContent = `$${99.99}`;
+    }
+
+    if (statusCountElement) {
+      statusCountElement.textContent = `🟢${99} 🟡${99} 🔴${99}`;
+    }
+    return;
+  }
+
+  if (totalOrdersElement) {
+    totalOrdersElement.textContent = `${analytics.totalOrders}`;
+  }
+
+  if (totalRevenueElement) {
+    totalRevenueElement.textContent = `$${analytics.totalRevenue.toFixed(2)}`;
+  }
+
+  if (statusCountElement) {
+    statusCountElement.textContent = `🟢${analytics.statusTotals.completed} 🟡${analytics.statusTotals.pending} 🔴${analytics.statusTotals.refunded}`;
+  }
+}
