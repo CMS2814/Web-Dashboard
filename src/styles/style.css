@@ -1,3 +1,9 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   margin-top: 50px;
   background-color: #202020;
@@ -49,17 +55,26 @@ body {
   background-color: #db34bf;
 }
 
+/* 2. Container Adjustments */
 .rectangle-container {
-  display: flex; /* Aligns children horizontally */
-  flex-direction: row; /* Explicitly sets horizontal alignment (default) */
-  gap: 30px; /* Adds space between each shape */
-  align-items: center; /* Centers shapes vertically if heights differ */
-  justify-content: center; /* Optional: Centers the whole group on the screen */
+  display: flex;
+  flex-flow: row wrap; /* CRITICAL: Allows rectangles to drop to the next line on mobile */
+  gap: 1.875rem; /* Converted 30px to rem for better scaling */
+  align-items: center;
+  justify-content: center;
   background-color: red;
+  padding: 1rem; /* Prevents rectangles from touching screen edges on mobile */
+  width: 100%;
 }
 
+/* 3. Rectangle Adjustments */
 .rectangle {
-  width: 150px;
-  height: 100px;
+  flex: 1 1 300px; /* Replaces width/max-width: grows, shrinks, and sets a 300px ideal basis */
+  max-width: 300px; /* Keeps the upper limit cap you wanted */
+  min-height: 100px; /* CRITICAL: Changed from height to min-height so it expands if text wraps */
+
+  padding: 1.25rem; /* Converted 20px to rem */
   background-color: #3498db;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  text-align: left;
 }

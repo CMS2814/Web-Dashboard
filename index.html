@@ -8,6 +8,19 @@
   <body>
     <div id="app">
       <h1>Shop Name</h1>
+      <!-- Order details -->
+      <div class="rectangle-container">
+        <div class="rectangle">
+          <h2><strong>Total Revenue</strong></h2>
+          <h3>$0.00</h3>
+        </div>
+        <div class="rectangle">
+          <h2>Total Orders</h2>
+          <h3>0</h3>
+        </div>
+        <div class="rectangle"></div>
+      </div>
+      <!-- Orders JSON/CSV file input -->
       <div id="dropzone">
         <label for="fileinput">Choose or drop a file:</label>
 
@@ -19,11 +32,8 @@
           style="display: none"
         />
       </div>
-      <div class="rectangle-container">
-        <div class="rectangle"></div>
-        <div class="rectangle"></div>
-        <div class="rectangle"></div>
-      </div>
+
+      <!-- Orders UI display area  -->
       <div id="order-list"></div>
     </div>
 

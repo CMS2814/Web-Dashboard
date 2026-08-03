@@ -6,7 +6,7 @@ import "./styles/style.css";
 import { readJsonFile, readCsvFile } from "./parser";
 import * as Types from "./types";
 
-import { makeOrder } from "./ui";
+import { makeOrder, renderOrderChart } from "./ui";
 
 import * as Storage from "./storage";
 
@@ -95,5 +95,7 @@ fileInput?.addEventListener("change", async () => {
 
 loadOrders();
 //Storage.clearOrders();
+
+//renderOrderChart();
 
 console.log("App initialized!");
